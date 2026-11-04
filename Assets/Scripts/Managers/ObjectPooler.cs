@@ -10,7 +10,7 @@ public static class ObjectPooler
     {
         if (!item.gameObject.activeSelf) { return; }
 
-        item.transform.position = Vector2.zero;
+        item.transform.position = Vector3.zero;
         poolDictionary[name].Enqueue(item);
         item.gameObject.SetActive(false);
 
@@ -18,22 +18,27 @@ public static class ObjectPooler
 
     public static T DequeueObject <T> (string key) where T : Component
     {
-        
-        if (poolDictionary[key].TryDequeue(out var item)) 
+        if (!poolDictionary.ContainsKey(key))
         {
-            return (T) item;
+            return null;
         }
 
-        return (T)EnqueueNewInstance(poolLockup[key], key);
+        if (poolDictionary[key].TryDequeue(out var item)) 
+        {
+            return item as T;
+        }
 
-        //return (T)poolDictionary[key].Dequeue ();
+        T prefab = poolLockup[key] as T;
+        T newInstance = Object.Instantiate(prefab);
+        newInstance.gameObject.SetActive(false);
+
+        return newInstance;
     } 
 
     public static T EnqueueNewInstance<T>(T item, string key) where T : Component
     {
         T newInstance = Object.Instantiate(item);
         newInstance.gameObject.SetActive(false);
-        newInstance.transform.position = Vector2.zero;
         poolDictionary[key].Enqueue(newInstance);
         return newInstance;
     }
