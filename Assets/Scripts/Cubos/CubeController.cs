@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoverCubo : MonoBehaviour
+public class CubeController : MonoBehaviour
 {
     public float velocidad = 5.0f;
 
