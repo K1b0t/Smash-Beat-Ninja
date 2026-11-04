@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void SetupPool()
     {
-        ObjectPooler.SetupPool(cubePrefab, 10, "cube");
+        ObjectPooler.SetupPool(cubePrefab, 10, "Cube");
     }
 
     public void ReflectScore(float CurrentScore)
