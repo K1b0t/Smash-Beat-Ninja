@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class CubeController : MonoBehaviour
 {
-    public float velocidad = 10.0f;
-    //public Vector3 mousePosition;
+    public float velocidad = -15.0f;
 
     float lifetime = 5.0f;
 
     public void Initialise()
     {
-
         lifetime = 10.0f;
     }
 
@@ -20,7 +18,15 @@ public class CubeController : MonoBehaviour
 
         lifetime -= Time.deltaTime;
 
-        if ( lifetime < 0.0f)
+        if (lifetime < 0.0f)
+        {
+            ObjectPooler.EnqueueObject(this, "Cube");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Mouse_Track" || other.CompareTag("MouseTrack"))
         {
             ObjectPooler.EnqueueObject(this, "Cube");
         }
