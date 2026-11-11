@@ -516,6 +516,80 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &1463456853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1463456855}
+  - component: {fileID: 1463456854}
+  m_Layer: 0
+  m_Name: SceneSoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1463456854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463456853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e8abdeade944647b8e88b7d7ab9fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  soundList:
+  - audioName: GameTheme
+    clip: {fileID: 8300000, guid: 71ce648b024ba074c9b06f5bf1c56cf9, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    playOnAwake: 1
+    audioSource: {fileID: 0}
+  - audioName: Slash
+    clip: {fileID: 8300000, guid: 1959f879475dd574cae7ba34d88f0417, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - audioName: GameEnding
+    clip: {fileID: 8300000, guid: 83fb45bcfec4740468dedc761a2f33dc, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  audioToTest: GameEnding
+  pitchRangeTest: {x: 0, y: 0}
+  fadeTimeTest: 5
+  playKey: 111
+  pauseKey: 112
+  playPitch: 9
+  fadeInKey: 282
+  fadeOutKey: 283
+--- !u!4 &1463456855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463456853}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.81135, y: 0, z: -0.47765}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1795989559
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,3 +629,4 @@ SceneRoots:
   - {fileID: 142587281}
   - {fileID: 438173137}
   - {fileID: 1795989560}
+  - {fileID: 1463456855}
