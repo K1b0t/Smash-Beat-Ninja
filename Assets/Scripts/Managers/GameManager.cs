@@ -1,3 +1,4 @@
+using Monou;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     public void ReflectScore(float CurrentScore)
     {
         if (ScoreText != null)
+            //GameScraper.Advance(ScoreText);
             ScoreText.text = "Score: " + CurrentScore.ToString("0.0");
     }
 
@@ -56,7 +58,6 @@ public class GameManager : MonoBehaviour
 
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
@@ -64,7 +65,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 

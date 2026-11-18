@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Monou;
 
 public class HUDManager : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class HUDManager : MonoBehaviour
             GameManager.Instance.HScoreText = HScoreText;
 
         }
+
+        GameScraper.Starts();
 
     }
 

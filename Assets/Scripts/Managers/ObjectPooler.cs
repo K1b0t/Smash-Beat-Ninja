@@ -8,6 +8,8 @@ public static class ObjectPooler
 
     public static void EnqueueObject<T>(T item, string name) where T : Component
     {
+        //Activar condición de derrota si activo
+
         if (item == null || !item.gameObject.activeSelf) { return; }
 
    
@@ -24,6 +26,9 @@ public static class ObjectPooler
 
     public static T DequeueObject<T>(string key) where T : Component
     {
+
+        //Desactivar condición de derrota si inactivo
+
         if (!poolDictionary.ContainsKey(key))
         {
 

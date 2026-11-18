@@ -1255,14 +1255,14 @@ MonoBehaviour:
     loop: 1
     playOnAwake: 1
     audioSource: {fileID: 0}
-  - audioName: Hit Sound
+  - audioName: Slash
     clip: {fileID: 8300000, guid: 1959f879475dd574cae7ba34d88f0417, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     playOnAwake: 0
     audioSource: {fileID: 0}
-  audioToTest: Hit Sound
+  audioToTest: Slash
   pitchRangeTest: {x: 1, y: 2}
   fadeTimeTest: 0
   playKey: 9
@@ -1393,6 +1393,51 @@ MonoBehaviour:
   onFadeInEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2093547757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093547759}
+  - component: {fileID: 2093547758}
+  m_Layer: 0
+  m_Name: MonouGameScraper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2093547758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093547757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26258c90a693418e87dd8adf6180684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monou.GameScraper
+  MonouKey: you-monou-code
+--- !u!4 &2093547759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093547757}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 992.0856, y: 469.52844, z: -1013.5088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1407,3 +1452,4 @@ SceneRoots:
   - {fileID: 1058876300}
   - {fileID: 1041626044}
   - {fileID: 1756536392}
+  - {fileID: 2093547759}

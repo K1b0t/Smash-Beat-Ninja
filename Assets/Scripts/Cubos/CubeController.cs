@@ -1,3 +1,4 @@
+using Monou;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,7 +6,7 @@ public class CubeController : MonoBehaviour
 {
     [Header("Movimiento")]
     public float velocidad = 15.0f;
-    public float alturaObjetivoOffset = 0.5f;
+    public float PlayerOffset = 0.5f;
 
     [Header("Tutorial y Derrota")]
     public float tutorialStopDistance = 4.0f;
@@ -43,7 +44,7 @@ public class CubeController : MonoBehaviour
 
         if (playerTransform != null)
         {
-            Vector3 target = playerTransform.position + (Vector3.up * alturaObjetivoOffset);
+            Vector3 target = playerTransform.position + (Vector3.up * PlayerOffset);
             moveDirection = (target - transform.position).normalized;
             transform.LookAt(target);
         }
@@ -103,6 +104,7 @@ public class CubeController : MonoBehaviour
         }
         else if (other.CompareTag("Player") || other.GetComponentInParent<PlayerController>() != null)
         {
+            GameScraper.Finish(100); // Aquí marcar el Score del jugador
             ActivarDerrota();
         }
     }

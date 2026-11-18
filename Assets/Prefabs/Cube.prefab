@@ -128,5 +128,5 @@ MonoBehaviour:
   velocidad: 15
   alturaObjetivoOffset: -0.5
   tutorialStopDistance: 5
-  distanciaDerrota: 0.7
+  distanciaDerrota: 0.65
   escenaDerrota: Loser
