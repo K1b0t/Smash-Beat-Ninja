@@ -8,9 +8,14 @@ public class CubeGenerator : MonoBehaviour
     public float spawnTimer = 1.0f;
 
     private float timer = 0.0f;
+    private bool firstCubeSpawned = false;
 
     void Update()
     {
+
+        if (PauseManager.Instance != null && PauseManager.Instance.isPaused)
+            return;
+
         timer += Time.deltaTime;
 
         if (timer >= spawnTimer)
@@ -26,7 +31,11 @@ public class CubeGenerator : MonoBehaviour
         CubeController instance = ObjectPooler.DequeueObject<CubeController>("Cube");
         instance.transform.position = transform.position;
         instance.transform.rotation = transform.rotation;
-        instance.Initialise();
+
+        bool isTutorial = !firstCubeSpawned;
+        firstCubeSpawned = true;
+
+        instance.Initialise(isTutorial);
         instance.gameObject.SetActive(true);
     }
 }

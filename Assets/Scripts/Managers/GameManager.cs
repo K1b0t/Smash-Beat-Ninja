@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
 
     public CubeController cubePrefab;
 
-    public PauseManager pauseManager;
-
 
     public static GameManager Instance => m_instance;
     private static GameManager m_instance;
@@ -62,7 +60,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         
-        pauseManager = PauseManager.Instance;
+
 
     }
 
@@ -80,6 +78,8 @@ public class GameManager : MonoBehaviour
         {
             Player = player;
         }
+
+        SetupPool();
     }
 
 

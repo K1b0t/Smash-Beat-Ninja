@@ -245,7 +245,7 @@ MonoBehaviour:
   ScoreText: {fileID: 0}
   HScoreText: {fileID: 0}
   Player: {fileID: 0}
-  cubePrefab: {fileID: 0}
+  cubePrefab: {fileID: 4541278996414865474, guid: cbfceb6ee4d4ca54c9677874fee900f4, type: 3}
 --- !u!1 &457210908
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +337,9 @@ MonoBehaviour:
   fadeImage: {fileID: 457210910}
   fadeTime: 3
   onFadeOutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onFadeInEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 929020175}
@@ -1440,6 +1443,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881454101}
   m_CullTransparentMesh: 1
+--- !u!1 &1947730169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1947730171}
+  - component: {fileID: 1947730170}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1947730170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947730169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e8abdeade944647b8e88b7d7ab9fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  soundList:
+  - audioName: MenuSong
+    clip: {fileID: 8300000, guid: 97ac15028cb96ab49ad8298f0ea112e9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 1
+    audioSource: {fileID: 0}
+  audioToTest: 
+  pitchRangeTest: {x: 0, y: 0}
+  fadeTimeTest: 0
+  playKey: 0
+  pauseKey: 0
+  playPitch: 0
+  fadeInKey: 0
+  fadeOutKey: 0
+--- !u!4 &1947730171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947730169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 665.3178, y: 170.8672, z: -1226.8204}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1449,3 +1512,4 @@ SceneRoots:
   - {fileID: 929020174}
   - {fileID: 38302151}
   - {fileID: 56309269}
+  - {fileID: 1947730171}

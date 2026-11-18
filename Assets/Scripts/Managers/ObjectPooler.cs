@@ -6,26 +6,43 @@ public static class ObjectPooler
     public static Dictionary<string, Component> poolLockup = new Dictionary<string, Component>();
     public static Dictionary<string, Queue<Component>> poolDictionary = new Dictionary<string, Queue<Component>>();
 
-    public static void EnqueueObject <T> (T item, string name) where T : Component
+    public static void EnqueueObject<T>(T item, string name) where T : Component
     {
-        if (!item.gameObject.activeSelf) { return; }
+        if (item == null || !item.gameObject.activeSelf) { return; }
+
+   
+        if (!poolDictionary.ContainsKey(name))
+        {
+            item.gameObject.SetActive(false);
+            return;
+        }
 
         item.transform.position = Vector3.zero;
         poolDictionary[name].Enqueue(item);
         item.gameObject.SetActive(false);
-
     }
 
-    public static T DequeueObject <T> (string key) where T : Component
+    public static T DequeueObject<T>(string key) where T : Component
     {
         if (!poolDictionary.ContainsKey(key))
         {
+
+            Debug.LogError($"ObjectPooler: No existe el pool con la llave '{key}'");
             return null;
+
         }
 
-        if (poolDictionary[key].TryDequeue(out var item)) 
+        while (poolDictionary[key].Count > 0)
         {
-            return item as T;
+
+            var item = poolDictionary[key].Dequeue();
+            if (item != null)
+            {
+
+                return item as T;
+
+            }
+
         }
 
         T prefab = poolLockup[key] as T;
@@ -33,27 +50,28 @@ public static class ObjectPooler
         newInstance.gameObject.SetActive(false);
 
         return newInstance;
-    } 
-
-    public static T EnqueueNewInstance<T>(T item, string key) where T : Component
-    {
-        T newInstance = Object.Instantiate(item);
-        newInstance.gameObject.SetActive(false);
-        poolDictionary[key].Enqueue(newInstance);
-        return newInstance;
     }
 
-    public static void SetupPool <T>(T pooledItemPrefab, int poolSize, string dictionaryEntry) where T : Component
+    public static void SetupPool<T>(T pooledItemPrefab, int poolSize, string dictionaryEntry) where T : Component
     {
-        poolDictionary.Add(dictionaryEntry, new Queue<Component>());
-        poolLockup.Add(dictionaryEntry, pooledItemPrefab);
+        if (pooledItemPrefab == null)
+        {
+
+            Debug.LogError("ObjectPooler: El prefab asignado es NULL.");
+            return;
+
+        }
+
+        poolDictionary[dictionaryEntry] = new Queue<Component>();
+        poolLockup[dictionaryEntry] = pooledItemPrefab;
 
         for (int i = 0; i < poolSize; i++)
         {
+
             T pooledInstance = Object.Instantiate(pooledItemPrefab);
             pooledInstance.gameObject.SetActive(false);
-            poolDictionary[dictionaryEntry].Enqueue((T)pooledInstance);
-        }
+            poolDictionary[dictionaryEntry].Enqueue(pooledInstance);
 
+        }
     }
 }

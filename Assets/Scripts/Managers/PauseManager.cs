@@ -2,13 +2,10 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
-
     public static PauseManager Instance;
 
-    public bool IsPaused {  get; private set; }
-
-    public float TutorialCountdown = 5f;
-
+    public bool isPaused { get; private set; }
+    public bool firstCube { get; private set; }
 
     private void Awake()
     {
@@ -16,30 +13,40 @@ public class PauseManager : MonoBehaviour
         {
             Instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void PauseGame()
     {
-        IsPaused = true;
+        isPaused = true;
         Time.timeScale = 0f;
     }
 
-    public void UnpauseGame ()
+    public void UnpauseGame()
     {
-        IsPaused = false;
+        isPaused = false;
+        firstCube = false;
+        Time.timeScale = 1f;
+    }
+
+    public void TutorialPause()
+    {
+        isPaused = true;
+        firstCube = true;
         Time.timeScale = 1f;
 
+        Debug.Log("Corta el cubooooo");
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void CompleteTutorial()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (firstCube)
+        {
+            UnpauseGame();
+            Debug.Log("Empieza el genocido");
+        }
     }
 }

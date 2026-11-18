@@ -1,32 +1,32 @@
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening; //librería de DOTween
-using UnityEngine.Events; //librería para usar UnityEvents
+using DG.Tweening;
+using UnityEngine.Events;
 
 public class Fader : MonoBehaviour
 {
-
     public Image fadeImage;
-    public float fadeTime;
+    public float fadeTime = 1f;
 
-    public UnityEvent onFadeOutEvent;
+    public UnityEvent onFadeOutEvent; 
+    public UnityEvent onFadeInEvent; 
 
     void Start()
     {
-        fadeImage.raycastTarget = false; //asegurarse que la imagen no sea interactiva
+        fadeImage.raycastTarget = false;
         Color startColor = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1);
-        fadeImage.color = startColor; //asegurarse que eñ color de la imagen siempre inicie opaco.
+        fadeImage.color = startColor;
         FadeOut();
     }
 
-    public void FadeOut ()
+    public void FadeOut()
     {
-        fadeImage.DOFade(0, fadeTime).OnComplete(onFadeOutEvent.Invoke);
+        fadeImage.DOFade(0, fadeTime).OnComplete(() => onFadeOutEvent?.Invoke());
     }
 
     public void FadeIn()
     {
-        fadeImage.DOFade(1, fadeTime);
+        fadeImage.raycastTarget = true; // Bloquea clics mientras oscurece
+        fadeImage.DOFade(1, fadeTime).OnComplete(() => onFadeInEvent?.Invoke());
     }
-
 }

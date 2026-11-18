@@ -125,4 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be9ca219096e064eb3de91fd556fc80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoverCubo
-  velocidad: -5
+  velocidad: 15
+  alturaObjetivoOffset: -0.5
+  tutorialStopDistance: 5
+  distanciaDerrota: 0.7
+  escenaDerrota: Loser
