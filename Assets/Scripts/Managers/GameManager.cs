@@ -1,6 +1,9 @@
 using Monou;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+
+
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +16,17 @@ public class GameManager : MonoBehaviour
     public PlayerController Player;
 
     public CubeController cubePrefab;
+
+
+    //Timer cubos
+    [SerializeField]
+    private float timeToAccelerateCubes = 3;
+
+    [SerializeField]
+    private float timerToAccelerateCubes = 0;
+
+    [SerializeField]
+    private CubeGenerator[] cubeGenerators;
 
 
     public static GameManager Instance => m_instance;
@@ -34,7 +48,7 @@ public class GameManager : MonoBehaviour
         }
 
         SetupPool();
-
+        timerToAccelerateCubes = 0;
     }
 
     private void SetupPool()
@@ -60,14 +74,29 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+
 
 
     }
 
     void Update()
     {
+        CubeTimer();
+    }
 
+    private void CubeTimer()
+    {
+        timerToAccelerateCubes += Time.deltaTime;
+
+        if (timerToAccelerateCubes >= timeToAccelerateCubes)
+        {
+            for (int i = 0; i < cubeGenerators.Length; i++)
+            {
+                cubeGenerators[i]?.DecreaseSpawnTime();
+            }
+
+            timerToAccelerateCubes = 0;
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

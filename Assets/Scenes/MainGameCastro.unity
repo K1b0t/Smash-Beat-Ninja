@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &346733319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CubeGenerator
   cube: {fileID: 4541278996414865474, guid: cbfceb6ee4d4ca54c9677874fee900f4, type: 3}
   spawnTimer: 5
+  spawnTimerDecreasePercent: 0.25
+  minSpawnTimer: 0.2
+  radius: 50
 --- !u!4 &346733320
 Transform:
   m_ObjectHideFlags: 0
@@ -181,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &431790339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CubeGenerator
   cube: {fileID: 4541278996414865474, guid: cbfceb6ee4d4ca54c9677874fee900f4, type: 3}
   spawnTimer: 4.75
+  spawnTimerDecreasePercent: 0.25
+  minSpawnTimer: 0.2
+  radius: 50
 --- !u!4 &431790340
 Transform:
   m_ObjectHideFlags: 0
@@ -227,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &510817888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +248,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CubeGenerator
   cube: {fileID: 4541278996414865474, guid: cbfceb6ee4d4ca54c9677874fee900f4, type: 3}
   spawnTimer: 6
+  spawnTimerDecreasePercent: 0.25
+  minSpawnTimer: 0.2
+  radius: 50
 --- !u!4 &510817889
 Transform:
   m_ObjectHideFlags: 0
@@ -415,7 +424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &837185372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +439,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CubeGenerator
   cube: {fileID: 4541278996414865474, guid: cbfceb6ee4d4ca54c9677874fee900f4, type: 3}
   spawnTimer: 3.3
+  spawnTimerDecreasePercent: 0.25
+  minSpawnTimer: 0.2
+  radius: 50
 --- !u!4 &837185373
 Transform:
   m_ObjectHideFlags: 0
@@ -458,7 +470,7 @@ GameObject:
   m_Layer: 0
   m_Name: CubeGenerator
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -491,6 +503,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CubeGenerator
   cube: {fileID: 4541278996414865474, guid: cbfceb6ee4d4ca54c9677874fee900f4, type: 3}
   spawnTimer: 3
+  spawnTimerDecreasePercent: 0.1
+  minSpawnTimer: 0.2
+  radius: 15
 --- !u!1 &913819734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1139,10 @@ MonoBehaviour:
   HScoreText: {fileID: 0}
   Player: {fileID: 0}
   cubePrefab: {fileID: 4541278996414865474, guid: cbfceb6ee4d4ca54c9677874fee900f4, type: 3}
+  timeToAccelerateCubes: 10
+  timerToAccelerateCubes: 0
+  cubeGenerators:
+  - {fileID: 897615561}
 --- !u!4 &1661174441
 Transform:
   m_ObjectHideFlags: 0
