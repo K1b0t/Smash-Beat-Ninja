@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MouseFollower : MonoBehaviour
 {
-    [Header("Configuración de Distancia")]
+    [Header("Configuraciï¿½n de Distancia")]
     public float distanceFromCamera = 10.0f;
 
     void Update()
@@ -16,10 +16,16 @@ public class MouseFollower : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 100f))
         {
-            CubeController cube = hit.collider.GetComponentInParent<CubeController>();
+            /*CubeController cube = hit.collider.GetComponentInParent<CubeController>();
             if (cube != null)
             {
                 cube.CortarCubo();
+            }*/
+
+            CutPoint cutPoint = hit.collider.GetComponentInParent<CutPoint>();
+            if (cutPoint != null)
+            {
+                cutPoint.RemovePoint();
             }
         }
     }
