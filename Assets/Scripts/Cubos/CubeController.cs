@@ -65,7 +65,6 @@ public class CubeController : MonoBehaviour
 
         transform.Translate(moveDirection * Mathf.Abs(velocidad) * Time.deltaTime, Space.World);
 
-        // 1. Pausa del tutorial frente a la cámara
         if (isTutorialCube && !pauseTrigger && cameraTransform != null)
         {
             float distanceToCamera = Vector3.Distance(transform.position, cameraTransform.position);
@@ -81,7 +80,6 @@ public class CubeController : MonoBehaviour
             }
         }
 
-        // 2. Respaldo infalible de derrota por cercanía al jugador
         if (playerTransform != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, target);
@@ -111,7 +109,7 @@ public class CubeController : MonoBehaviour
         }
         else if (other.CompareTag("Player") || other.GetComponentInParent<PlayerController>() != null)
         {
-            GameScraper.Finish(100); // Aquí marcar el Score del jugador
+            GameScraper.Finish(100);
             ActivarDerrota();
         }
     }

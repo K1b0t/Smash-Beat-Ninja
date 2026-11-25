@@ -30,18 +30,15 @@ public class MouseFollower : MonoBehaviour
     {
         Vector3 mouseScreenPosition = Input.mousePosition;
 
-        // Calculamos el desplazamiento del mouse en el último frame
         Vector3 delta = mouseScreenPosition - lastMousePosition;
         lastMousePosition = mouseScreenPosition;
 
         EvaluarDireccion(delta);
 
-        // Actualizamos la posición de Mouse_Track en el mundo
         mouseScreenPosition.z = distanceFromCamera;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
         transform.position = worldPosition;
 
-        // Detección por Raycast hacia los cubos
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 100f))
         {
@@ -58,21 +55,18 @@ public class MouseFollower : MonoBehaviour
         float absX = Mathf.Abs(delta.x);
         float absY = Mathf.Abs(delta.y);
 
-        // Si el mouse apenas se movió, no registramos dirección
         if (absX < minMovementThreshold && absY < minMovementThreshold)
         {
             CurrentDirection = SwipeDirection.None;
             return;
         }
 
-        // Si el componente vertical (Y) supera al horizontal (X)
         if (absY > absX)
         {
             CurrentDirection = (delta.y > 0f) ? SwipeDirection.Up : SwipeDirection.Down;
         }
         else
         {
-            // Izquierda o derecha
             CurrentDirection = SwipeDirection.Horizontal;
         }
     }
