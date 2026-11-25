@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 838145653144862498}
   - component: {fileID: 4156153865905531524}
   - component: {fileID: 4541278996414865474}
+  - component: {fileID: 2024734688544887394}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -127,6 +128,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoverCubo
   velocidad: 15
   PlayerOffset: 0.5
+  distanceToPlayer: 0
+  distanceToCamera: 0
   tutorialStopDistance: 5
   distanciaDerrota: 0.65
   escenaDerrota: Loser
+  isTutorialCube: 0
+  Score: 1
+--- !u!114 &2024734688544887394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937564266928142785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e8abdeade944647b8e88b7d7ab9fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  soundList:
+  - audioName: Slash
+    clip: {fileID: 8300000, guid: 1959f879475dd574cae7ba34d88f0417, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  audioToTest: 
+  pitchRangeTest: {x: 0, y: 0}
+  fadeTimeTest: 0
+  playKey: 0
+  pauseKey: 0
+  playPitch: 0
+  fadeInKey: 0
+  fadeOutKey: 0

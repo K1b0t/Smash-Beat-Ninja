@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class CubeController : MonoBehaviour
 {
 
-    private GameManager gameManager;
-    private SoundManager soundManager;
-
     [Header("Movimiento")]
     public float velocidad = 15.0f;
     public float PlayerOffset = 0.5f;
@@ -40,6 +37,7 @@ public class CubeController : MonoBehaviour
         isTutorialCube = isTutorial;
         pauseTrigger = false;
         yaProcesado = false;
+        //gameManager = GameManager.Instance;
 
         if (Camera.main != null)
         {
@@ -140,7 +138,7 @@ public class CubeController : MonoBehaviour
             {
                 GameManager.Instance.AddScore(Score);
             }
-            //soundManager.PlayRandomPitch("Slash"); //No permite que se corten los cubos, AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            //SoundManager.PlayRandomPitch("Slash"); //No permite que se corten los cubos, AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
             CortarCubo();
         }
         else if (direction == MouseFollower.SwipeDirection.Up)
@@ -153,7 +151,7 @@ public class CubeController : MonoBehaviour
     private void ActivarDerrota()
     {
         Time.timeScale = 1f;
-        //GameScraper.Finish(gameManager.CurrentScore); //por qué esto ya no permite que pierdas???
+        GameScraper.Finish(GameManager.Instance.CurrentScore); //por qué esto ya no permite que pierdas???
         SceneManager.LoadScene(escenaDerrota);
     }
 

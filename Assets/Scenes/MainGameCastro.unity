@@ -770,7 +770,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.29411766, g: 0.07450981, b: 0.7137255, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -870,6 +870,63 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1001 &985059945
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1542735599424569765, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_Name
+      value: MonouGameScraper
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.12707
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.81287
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040298032354151764, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d9e7374bbe7d41b9a0175a981f5b27d, type: 3}
 --- !u!1 &1028540330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,13 +1725,6 @@ MonoBehaviour:
     loop: 1
     playOnAwake: 1
     audioSource: {fileID: 0}
-  - audioName: Slash
-    clip: {fileID: 8300000, guid: 1959f879475dd574cae7ba34d88f0417, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    audioSource: {fileID: 0}
   audioToTest: Slash
   pitchRangeTest: {x: 1, y: 2}
   fadeTimeTest: 0
@@ -1806,51 +1856,6 @@ MonoBehaviour:
   onFadeInEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &2093547757
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2093547759}
-  - component: {fileID: 2093547758}
-  m_Layer: 0
-  m_Name: MonouGameScraper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2093547758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093547757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26258c90a693418e87dd8adf6180684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Monou.GameScraper
-  MonouKey: you-monou-code
---- !u!4 &2093547759
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093547757}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 992.0856, y: 469.52844, z: -1013.5088}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1864,5 +1869,5 @@ SceneRoots:
   - {fileID: 1058876300}
   - {fileID: 1041626044}
   - {fileID: 1756536392}
-  - {fileID: 2093547759}
   - {fileID: 705011640}
+  - {fileID: 985059945}
