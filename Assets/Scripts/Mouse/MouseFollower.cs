@@ -10,6 +10,7 @@ public class MouseFollower : MonoBehaviour
     public float minMovementThreshold = 1.5f;
 
     private Vector3 lastMousePosition;
+    private CubeController cubeController;
 
     public enum SwipeDirection
     {

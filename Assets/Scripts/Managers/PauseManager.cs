@@ -4,6 +4,9 @@ public class PauseManager : MonoBehaviour
 {
     public static PauseManager Instance;
 
+    [Header("Tutorial")]
+    public GameObject tutorialText;
+
     public bool isPaused { get; private set; }
     public bool firstCube { get; private set; }
 
@@ -16,6 +19,10 @@ public class PauseManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+        if (tutorialText != null)
+        {
+            tutorialText.SetActive(false);
         }
     }
 
@@ -38,6 +45,11 @@ public class PauseManager : MonoBehaviour
         firstCube = true;
         Time.timeScale = 1f;
 
+        if (tutorialText != null)
+        {
+            tutorialText.SetActive(true);
+        }
+
         Debug.Log("Corta el cubooooo");
     }
 
@@ -47,6 +59,11 @@ public class PauseManager : MonoBehaviour
         {
             UnpauseGame();
             Debug.Log("Empieza el genocido");
+        }
+
+        if (tutorialText != null)
+        {
+            tutorialText.SetActive(false);
         }
     }
 }

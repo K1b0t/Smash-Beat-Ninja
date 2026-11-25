@@ -83,7 +83,7 @@ public class HUDManager : MonoBehaviour
     public void ReflectHScore(int CurrentHScore)
     {
         if (HScoreText != null)
-            HScoreText.text = "High Score: " + CurrentHScore.ToString("0");
+            HScoreText.text = "Record: " + CurrentHScore.ToString("0");
     }
 
     public void QuitGame()

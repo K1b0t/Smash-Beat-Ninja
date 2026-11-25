@@ -1,9 +1,13 @@
+using DG.Tweening.Core.Easing;
 using Monou;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CubeController : MonoBehaviour
 {
+
+    private GameManager gameManager;
+
     [Header("Movimiento")]
     public float velocidad = 15.0f;
     public float PlayerOffset = 0.5f;
@@ -26,6 +30,10 @@ public class CubeController : MonoBehaviour
     private Transform cameraTransform;
     private Vector3 moveDirection;
     private float lifetime = 10.0f;
+
+    [Header("Level Info")]
+    public int score;
+    public int record;
 
     public void Initialise(bool isTutorial = false)
     {
@@ -103,6 +111,12 @@ public class CubeController : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        gameManager?.ReflectScore(score);
+        gameManager?.ReflectHScore(record);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Mouse_Track" || other.CompareTag("MouseTrack"))
@@ -116,7 +130,7 @@ public class CubeController : MonoBehaviour
         }
         else if (other.CompareTag("Player") || other.GetComponentInParent<PlayerController>() != null)
         {
-            GameScraper.Finish(100); // Aqu� marcar el Score del jugador
+            GameScraper.Finish(100); // marcar el Score del jugador
             ActivarDerrota();
         }
     }
@@ -128,6 +142,7 @@ public class CubeController : MonoBehaviour
         if (direction == MouseFollower.SwipeDirection.Horizontal)
         {
             yaProcesado = true;
+            score++;
             CortarCubo();
         }
         else if (direction == MouseFollower.SwipeDirection.Up)
