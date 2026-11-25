@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI HScoreText;
 
+    [Header("Score Info")]
+    public int CurrentScore { get; private set; }
+    public int HighScore { get; private set; }
 
     public PlayerController Player;
 
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        HighScore = PlayerPrefs.GetInt("HighScore", 0);
         SetupPool();
         timerToAccelerateCubes = 0;
     }
@@ -56,11 +60,32 @@ public class GameManager : MonoBehaviour
         ObjectPooler.SetupPool(cubePrefab, 10, "Cube");
     }
 
-    public void ReflectScore(float CurrentScore)
+    public void AddScore(int points)
+    {
+        CurrentScore += points;
+        ReflectScore(CurrentScore);
+
+        if (CurrentScore > HighScore)
+        {
+            HighScore = Mathf.FloorToInt(CurrentScore);
+            PlayerPrefs.SetInt("HighScore", HighScore);
+            ReflectHScore(HighScore);
+        }
+    }
+
+    public void ResetScore()
+    {
+        CurrentScore = 0;
+        //GameScraper.Finish(CurrentScore); // marcar el Score del jugador
+        ReflectScore(CurrentScore);
+        ReflectHScore(HighScore);
+    }
+
+    public void ReflectScore(int CurrentScore)
     {
         if (ScoreText != null)
-            //GameScraper.Advance(ScoreText);
-            ScoreText.text = "Score: " + CurrentScore.ToString("0.0");
+            GameScraper.Advance(CurrentScore);
+        ScoreText.text = "Score: " + CurrentScore.ToString("0");
     }
 
     public void ReflectHScore(int CurrentHScore)
@@ -108,6 +133,7 @@ public class GameManager : MonoBehaviour
             Player = player;
         }
 
+        ResetScore();
         SetupPool();
     }
 

@@ -639,9 +639,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CubeGenerator
   cube: {fileID: 4541278996414865474, guid: cbfceb6ee4d4ca54c9677874fee900f4, type: 3}
-  spawnTimer: 3
-  spawnTimerDecreasePercent: 0.1
-  minSpawnTimer: 0.2
+  spawnTimer: 4
+  spawnTimerDecreasePercent: 0.25
+  minSpawnTimer: 0.5
   radius: 7
 --- !u!1 &913819734
 GameObject:
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00a0e00f25a9e64aa39704526612cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseManager
-  tutorialText: {fileID: 0}
+  tutorialText: {fileID: 869528454}
 --- !u!4 &1041626044
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,8 +1250,8 @@ RectTransform:
   m_Children:
   - {fileID: 1028540331}
   - {fileID: 1729170021}
-  - {fileID: 1919684019}
   - {fileID: 869528455}
+  - {fileID: 1919684019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

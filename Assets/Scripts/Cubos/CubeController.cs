@@ -7,6 +7,7 @@ public class CubeController : MonoBehaviour
 {
 
     private GameManager gameManager;
+    private SoundManager soundManager;
 
     [Header("Movimiento")]
     public float velocidad = 15.0f;
@@ -25,15 +26,13 @@ public class CubeController : MonoBehaviour
     private bool pauseTrigger = false;
     private bool yaProcesado = false;
 
+    [Header("Puntaje")]
+    public int Score = 1;
 
     private Transform playerTransform;
     private Transform cameraTransform;
     private Vector3 moveDirection;
     private float lifetime = 10.0f;
-
-    [Header("Level Info")]
-    public int score;
-    public int record;
 
     public void Initialise(bool isTutorial = false)
     {
@@ -111,12 +110,6 @@ public class CubeController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        gameManager?.ReflectScore(score);
-        gameManager?.ReflectHScore(record);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Mouse_Track" || other.CompareTag("MouseTrack"))
@@ -130,7 +123,7 @@ public class CubeController : MonoBehaviour
         }
         else if (other.CompareTag("Player") || other.GetComponentInParent<PlayerController>() != null)
         {
-            GameScraper.Finish(100); // marcar el Score del jugador
+            //GameScraper.Finish(100); // marcar el Score del jugador
             ActivarDerrota();
         }
     }
@@ -142,13 +135,17 @@ public class CubeController : MonoBehaviour
         if (direction == MouseFollower.SwipeDirection.Horizontal)
         {
             yaProcesado = true;
-            score++;
+
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.AddScore(Score);
+            }
+            //soundManager.PlayRandomPitch("Slash"); //No permite que se corten los cubos, AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
             CortarCubo();
         }
         else if (direction == MouseFollower.SwipeDirection.Up)
         {
             yaProcesado = true;
-            GameScraper.Finish(100);
             ActivarDerrota();
         }
     }
@@ -156,6 +153,7 @@ public class CubeController : MonoBehaviour
     private void ActivarDerrota()
     {
         Time.timeScale = 1f;
+        //GameScraper.Finish(gameManager.CurrentScore); //por qué esto ya no permite que pierdas???
         SceneManager.LoadScene(escenaDerrota);
     }
 
