@@ -19,6 +19,8 @@ public class CubeController : MonoBehaviour
     [SerializeField]
     private bool isTutorialCube = false;
     private bool pauseTrigger = false;
+    private bool yaProcesado = false;
+
 
     private Transform playerTransform;
     private Transform cameraTransform;
@@ -30,6 +32,7 @@ public class CubeController : MonoBehaviour
         lifetime = 10.0f;
         isTutorialCube = isTutorial;
         pauseTrigger = false;
+        yaProcesado = false;
 
         if (Camera.main != null)
         {
@@ -104,11 +107,33 @@ public class CubeController : MonoBehaviour
     {
         if (other.gameObject.name == "Mouse_Track" || other.CompareTag("MouseTrack"))
         {
-            CortarCubo();
+            MouseFollower follower = other.GetComponent<MouseFollower>();
+            MouseFollower.SwipeDirection dir = (follower != null)
+                ? follower.CurrentDirection
+                : MouseFollower.SwipeDirection.None;
+
+            ProcesarContactoMouse(dir);
         }
         else if (other.CompareTag("Player") || other.GetComponentInParent<PlayerController>() != null)
         {
             GameScraper.Finish(100); // Aqu� marcar el Score del jugador
+            ActivarDerrota();
+        }
+    }
+
+    public void ProcesarContactoMouse(MouseFollower.SwipeDirection direction)
+    {
+        if (yaProcesado) return;
+
+        if (direction == MouseFollower.SwipeDirection.Horizontal)
+        {
+            yaProcesado = true;
+            CortarCubo();
+        }
+        else if (direction == MouseFollower.SwipeDirection.Up)
+        {
+            yaProcesado = true;
+            GameScraper.Finish(100);
             ActivarDerrota();
         }
     }

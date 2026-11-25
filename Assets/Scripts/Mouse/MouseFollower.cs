@@ -5,11 +5,37 @@ public class MouseFollower : MonoBehaviour
     [Header("Configuración de Distancia")]
     public float distanceFromCamera = 10.0f;
 
+    [Header("Sensibilidad de Corte")]
+    [Tooltip("Píxeles mínimos que debe moverse el mouse en un frame para contar como movimiento.")]
+    public float minMovementThreshold = 1.5f;
+
+    private Vector3 lastMousePosition;
+
+    public enum SwipeDirection
+    {
+        None,
+        Horizontal,
+        Up,
+        Down
+    }
+
+    public SwipeDirection CurrentDirection { get; private set; } = SwipeDirection.None;
+
+    void Start()
+    {
+        lastMousePosition = Input.mousePosition;
+    }
+
     void Update()
     {
         Vector3 mouseScreenPosition = Input.mousePosition;
-        mouseScreenPosition.z = distanceFromCamera;
 
+        Vector3 delta = mouseScreenPosition - lastMousePosition;
+        lastMousePosition = mouseScreenPosition;
+
+        EvaluarDireccion(delta);
+
+        mouseScreenPosition.z = distanceFromCamera;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
         transform.position = worldPosition;
 
@@ -19,8 +45,29 @@ public class MouseFollower : MonoBehaviour
             CubeController cube = hit.collider.GetComponentInParent<CubeController>();
             if (cube != null)
             {
-                cube.CortarCubo();
+                cube.ProcesarContactoMouse(CurrentDirection);
             }
+        }
+    }
+
+    private void EvaluarDireccion(Vector3 delta)
+    {
+        float absX = Mathf.Abs(delta.x);
+        float absY = Mathf.Abs(delta.y);
+
+        if (absX < minMovementThreshold && absY < minMovementThreshold)
+        {
+            CurrentDirection = SwipeDirection.None;
+            return;
+        }
+
+        if (absY > absX)
+        {
+            CurrentDirection = (delta.y > 0f) ? SwipeDirection.Up : SwipeDirection.Down;
+        }
+        else
+        {
+            CurrentDirection = SwipeDirection.Horizontal;
         }
     }
 }
